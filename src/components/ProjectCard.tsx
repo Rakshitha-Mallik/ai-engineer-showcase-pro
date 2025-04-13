@@ -20,8 +20,12 @@ const ProjectCard = ({ title, description, image, demoLink, githubLink, tags }: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
+      whileHover={{ 
+        y: -10,
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+      }}
     >
-      <Card className="overflow-hidden border-0 shadow-md h-full">
+      <Card className="overflow-hidden border-0 shadow-md h-full bg-white">
         <div className="relative h-48 overflow-hidden">
           <img 
             src={image} 

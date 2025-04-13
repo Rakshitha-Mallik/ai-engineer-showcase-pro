@@ -2,70 +2,144 @@
 import { useState } from 'react';
 import ProjectCard, { ProjectProps } from './ProjectCard';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const ProjectsSection = () => {
   const projects: ProjectProps[] = [
     {
-      title: "Neural Machine Translation System",
-      description: "Built an end-to-end neural machine translation system using transformer architecture with attention mechanisms.",
-      image: "https://images.unsplash.com/photo-1555952494-efd681c7e3f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "GenAI-powered Sales Automation",
+      description: "Developed a sales automation system using CrewAI, LangChain, and Gemini LLM that automates personalized email outreach, real-time client query resolution, and intelligent meeting scheduling.",
+      image: "https://images.unsplash.com/photo-1661956600684-97d3a4320e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      demoLink: "#",
+      tags: ["CrewAI", "LangChain", "Gemini LLM", "Sales Automation"]
+    },
+    {
+      title: "Intelligent Document Processing",
+      description: "Built a document processing system using OCR and Gemini LLMs to automate data extraction from invoices, bills, and industry-specific documents with 98% accuracy.",
+      image: "https://images.unsplash.com/photo-1633419461186-7d40a38105ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      githubLink: "#",
+      tags: ["OCR", "Gemini LLM", "Docker", "GCP"]
+    },
+    {
+      title: "SaaS-based Voice AI Assistant",
+      description: "Led development of a Voice AI Assistant using Twilio and OpenAI to automate telephony workflows for appointment scheduling, reservations, and customer service.",
+      image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      demoLink: "#",
+      tags: ["OpenAI", "Twilio", "Voice AI", "SaaS"]
+    },
+    {
+      title: "RAG-based Enterprise Chatbot",
+      description: "Built an AI-powered chatbot leveraging Retrieval-Augmented Generation, Pinecone as a vector database, and OpenAI to dynamically answer enterprise and client-specific queries.",
+      image: "https://images.unsplash.com/photo-1673476167933-ca711683cbf3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       githubLink: "#",
       demoLink: "#",
-      tags: ["NLP", "PyTorch", "Transformers", "Attention"]
+      tags: ["RAG", "Pinecone", "OpenAI", "Vector Database"]
     },
     {
-      title: "Computer Vision for Retail Analytics",
-      description: "Developed a retail analytics solution using computer vision to track customer behavior and optimize store layouts.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      githubLink: "#",
-      tags: ["Computer Vision", "OpenCV", "TensorFlow", "Edge Computing"]
-    },
-    {
-      title: "Predictive Maintenance ML Pipeline",
-      description: "Created an ML pipeline for predictive maintenance in manufacturing, reducing downtime by 35%.",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      demoLink: "#",
-      tags: ["Time Series", "MLOps", "AWS", "Scikit-Learn"]
-    },
-    {
-      title: "Recommendation Engine for E-commerce",
-      description: "Built a hybrid recommendation engine combining collaborative filtering and content-based approaches.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      githubLink: "#",
-      demoLink: "#",
-      tags: ["Recommendation Systems", "PySpark", "Deep Learning"]
-    },
-    {
-      title: "Automated Medical Diagnosis",
-      description: "Developed a system for automated diagnosis of medical conditions from X-ray images using CNNs.",
+      title: "3D Lung Segmentation with nnU-Net",
+      description: "Implemented a 3D lung segmentation application using nnU-Net to classify lung regions, achieving 97% accuracy for medical image analysis.",
       image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       githubLink: "#",
-      tags: ["Healthcare AI", "CNN", "Transfer Learning", "TensorFlow"]
+      tags: ["nnU-Net", "Medical Imaging", "Python", "Deep Learning"]
     },
     {
-      title: "Real-time Sentiment Analysis API",
-      description: "Created an API for real-time sentiment analysis of customer feedback with detailed emotion recognition.",
-      image: "https://images.unsplash.com/photo-1468779036391-52341f60b55d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "3D Liver Delineation System",
+      description: "Developed a 3D liver delineation system using nnU-Net to identify liver segments from NIfTI files with 98% accuracy to support tumor detection.",
+      image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       demoLink: "#",
-      tags: ["NLP", "FastAPI", "BERT", "Docker"]
+      tags: ["nnU-Net", "NIfTI", "Medical Imaging", "Deep Learning"]
+    },
+    {
+      title: "Kidney Stone Classification CNN",
+      description: "Designed and trained a custom CNN for classifying kidney stones, achieving 90% accuracy, integrated with decision tree classifiers.",
+      image: "https://images.unsplash.com/photo-1657299170964-205cde29bc2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      githubLink: "#",
+      tags: ["CNN", "Classification", "Medical", "Python"]
+    },
+    {
+      title: "SBERT Model Implementation",
+      description: "Engineered and deployed SBERT model as a REST API using Flask and Docker for scalable sentence embedding delivery, enhancing semantic understanding of diverse NLP tasks.",
+      image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      demoLink: "#",
+      githubLink: "#",
+      tags: ["SBERT", "NLP", "Flask", "Docker"]
+    },
+    {
+      title: "Video-to-Text for Hysterectomy",
+      description: "Developed a smart framework for video-to-text generation using Multilayer Cross-Attention Networks and Vision Transformer models to document hysterectomy surgeries with 84% accuracy.",
+      image: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      githubLink: "#",
+      tags: ["Video Processing", "GPT", "Medical", "Deep Learning"]
     }
   ];
 
-  const categories = ["All", "NLP", "Computer Vision", "MLOps", "Deep Learning"];
+  const categories = ["All", "LLMs", "Deep Learning", "Medical Imaging", "NLP", "Cloud"];
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleProjects, setVisibleProjects] = useState(6);
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
     : projects.filter(project => 
-        project.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase()))
+        project.tags.some(tag => {
+          const lowercaseTag = tag.toLowerCase();
+          const lowercaseCategory = activeCategory.toLowerCase();
+          
+          if (activeCategory === "LLMs") {
+            return ["openai", "crewai", "langchain", "llm", "gpt", "gemini"].some(term => 
+              lowercaseTag.includes(term)
+            );
+          } else if (activeCategory === "Deep Learning") {
+            return ["cnn", "neural", "deep learning", "u-net", "nnu-net", "transformer"].some(term => 
+              lowercaseTag.includes(term)
+            );
+          } else if (activeCategory === "Medical Imaging") {
+            return ["medical", "lung", "liver", "kidney", "segmentation", "nifti"].some(term => 
+              lowercaseTag.includes(term)
+            );
+          } else if (activeCategory === "NLP") {
+            return ["nlp", "text", "sbert", "language", "rag", "embeddings"].some(term => 
+              lowercaseTag.includes(term)
+            );
+          } else if (activeCategory === "Cloud") {
+            return ["aws", "gcp", "azure", "docker", "cloud", "deployment"].some(term => 
+              lowercaseTag.includes(term)
+            );
+          } else {
+            return lowercaseTag.includes(lowercaseCategory);
+          }
+        })
       );
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
 
   return (
     <section id="projects" className="section-container">
-      <h2 className="section-title">Projects</h2>
+      <motion.h2 
+        className="section-title"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        Projects
+      </motion.h2>
       
-      <div className="flex justify-center mb-10 flex-wrap gap-2">
+      <motion.div 
+        className="flex justify-center mb-10 flex-wrap gap-2"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         {categories.map((category, index) => (
           <Button
             key={index}
@@ -78,18 +152,30 @@ const ProjectsSection = () => {
             {category}
           </Button>
         ))}
-      </div>
+      </motion.div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {filteredProjects
           .slice(0, visibleProjects)
           .map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
-      </div>
+      </motion.div>
       
       {filteredProjects.length > visibleProjects && (
-        <div className="text-center mt-12">
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
           <Button
             onClick={() => setVisibleProjects(prevState => prevState + 3)}
             variant="outline"
@@ -97,7 +183,7 @@ const ProjectsSection = () => {
           >
             Load More
           </Button>
-        </div>
+        </motion.div>
       )}
     </section>
   );
