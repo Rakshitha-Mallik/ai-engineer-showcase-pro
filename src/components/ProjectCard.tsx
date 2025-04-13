@@ -22,18 +22,21 @@ const ProjectCard = ({ title, description, image, demoLink, githubLink, tags }: 
       transition={{ duration: 0.5 }}
       whileHover={{ 
         y: -10,
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
       }}
       className="h-full"
     >
-      <Card className="overflow-hidden border-0 shadow-md h-full bg-white dark:bg-gray-800 dark:text-white hover-3d glass-card">
-        <div className="relative h-48 overflow-hidden">
+      <Card className="overflow-hidden rounded-xl border-0 shadow-xl h-full bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-800/80 dark:to-gray-900/80 dark:text-white hover-3d glass-card border border-white/10">
+        <div className="relative h-48 overflow-hidden rounded-t-xl">
+          {/* Gradient overlay on the image */}
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-blue-500/30 mix-blend-overlay z-10"></div>
+          
           <img 
             src={image} 
             alt={title} 
             className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end z-20">
             <div className="absolute bottom-0 left-0 w-full p-4">
               <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
               <div className="flex flex-wrap gap-1 mb-2">
@@ -52,12 +55,12 @@ const ProjectCard = ({ title, description, image, demoLink, githubLink, tags }: 
             <div className="absolute bottom-4 right-4 flex space-x-2">
               {githubLink && (
                 <motion.a 
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(147, 51, 234, 0.7)" }}
                   whileTap={{ scale: 0.95 }}
                   href={githubLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors"
+                  className="p-2 bg-gradient-to-r from-purple-600 to-violet-600 backdrop-blur-md rounded-full transition-colors shadow-lg shadow-purple-600/30"
                 >
                   <Github className="w-5 h-5 text-white" />
                 </motion.a>
@@ -65,12 +68,12 @@ const ProjectCard = ({ title, description, image, demoLink, githubLink, tags }: 
               
               {demoLink && (
                 <motion.a 
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(6, 182, 212, 0.7)" }}
                   whileTap={{ scale: 0.95 }}
                   href={demoLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/40 transition-colors"
+                  className="p-2 bg-gradient-to-r from-cyan-600 to-blue-600 backdrop-blur-md rounded-full transition-colors shadow-lg shadow-cyan-600/30"
                 >
                   <ExternalLink className="w-5 h-5 text-white" />
                 </motion.a>
@@ -79,7 +82,7 @@ const ProjectCard = ({ title, description, image, demoLink, githubLink, tags }: 
               {!demoLink && !githubLink && (
                 <motion.div 
                   whileHover={{ scale: 1.1 }}
-                  className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white/70"
+                  className="p-2 bg-gradient-to-r from-gray-600 to-slate-800 backdrop-blur-md rounded-full text-white/70 shadow-lg"
                 >
                   <Lock className="w-5 h-5" />
                 </motion.div>
@@ -88,15 +91,15 @@ const ProjectCard = ({ title, description, image, demoLink, githubLink, tags }: 
           </div>
         </div>
         
-        <CardContent className="p-6">
-          <h3 className="text-xl font-bold mb-2 dark:text-white">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{description}</p>
+        <CardContent className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-md border-t border-white/5">
+          <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+          <p className="text-gray-300 mb-4 text-sm">{description}</p>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, index) => (
               <Badge 
                 key={index} 
                 variant="secondary" 
-                className="bg-blue-50 text-blue-700 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/40"
+                className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-blue-300 hover:from-purple-500/30 hover:to-blue-500/30"
               >
                 {tag}
               </Badge>
