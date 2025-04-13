@@ -142,4 +142,67 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+
+  /* Dark theme specific classes */
+  .dark .hero-gradient {
+    @apply bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent;
+  }
+
+  .dark .gradient-border::before {
+    background: linear-gradient(to right, rgba(98, 149, 255, 0.7), rgba(171, 106, 255, 0.7));
+  }
+
+  /* New animation classes */
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  .pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* Particle background */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  /* Glowing effect for dark mode */
+  .glow-effect {
+    box-shadow: 0 0 15px rgba(98, 149, 255, 0.3), 0 0 30px rgba(171, 106, 255, 0.1);
+  }
+
+  .dark .glow-effect {
+    box-shadow: 0 0 15px rgba(98, 149, 255, 0.5), 0 0 30px rgba(171, 106, 255, 0.3);
+  }
+
+  /* Glassmorphism effect */
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 dark:bg-black/30 border border-white/20 dark:border-white/10;
+  }
+
+  /* 3D hover effect */
+  .hover-3d {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-3d:hover {
+    transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .hover-3d:hover {
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+  }
 }
