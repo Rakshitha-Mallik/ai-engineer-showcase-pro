@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
-import { Brain, Code, Cloud, ChevronRight, Database, Server } from 'lucide-react';
+import { Brain, Code, Cloud, ChevronRight, Database, Globe, Server } from 'lucide-react';
 
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState<string>('AI & Machine Learning');
@@ -12,7 +12,6 @@ const SkillsSection = () => {
     {
       title: 'AI & Machine Learning',
       icon: <Brain className="w-5 h-5" />,
-      color: "from-purple-500 to-violet-600",
       skills: [
         { name: 'LangChain', level: 'Expert', description: 'Building LLM applications and agent workflows' },
         { name: 'CrewAI', level: 'Expert', description: 'Creating AI agent-based workflow automation' },
@@ -26,7 +25,6 @@ const SkillsSection = () => {
     {
       title: 'Programming & Tools',
       icon: <Code className="w-5 h-5" />,
-      color: "from-blue-500 to-cyan-600",
       skills: [
         { name: 'Python', level: 'Expert', description: 'Pandas, NumPy, Matplotlib for data processing' },
         { name: 'C++', level: 'Advanced', description: 'System programming and optimization' },
@@ -40,7 +38,6 @@ const SkillsSection = () => {
     {
       title: 'Databases & Storage',
       icon: <Database className="w-5 h-5" />,
-      color: "from-emerald-500 to-green-600",
       skills: [
         { name: 'SQL', level: 'Advanced', description: 'Database design and queries' },
         { name: 'MongoDB', level: 'Intermediate', description: 'NoSQL database for flexible schemas' },
@@ -53,7 +50,6 @@ const SkillsSection = () => {
     {
       title: 'Cloud & Infrastructure',
       icon: <Cloud className="w-5 h-5" />,
-      color: "from-rose-500 to-pink-600",
       skills: [
         { name: 'GCP', level: 'Advanced', description: 'Cloud deployment and services' },
         { name: 'AWS', level: 'Advanced', description: 'Scalable cloud infrastructure' },
@@ -61,6 +57,16 @@ const SkillsSection = () => {
         { name: 'RESTful APIs', level: 'Expert', description: 'API design and implementation' },
         { name: 'Microservices', level: 'Advanced', description: 'Scalable application architecture' },
         { name: 'CI/CD', level: 'Intermediate', description: 'Continuous integration and deployment' },
+      ]
+    },
+    {
+      title: 'Web & Design',
+      icon: <Globe className="w-5 h-5" />,
+      skills: [
+        { name: 'HTML/CSS', level: 'Intermediate', description: 'Web markup and styling' },
+        { name: 'Bootstrap', level: 'Intermediate', description: 'Frontend responsive framework' },
+        { name: 'Canva', level: 'Advanced', description: 'Design and presentation tools' },
+        { name: 'UI/UX Basics', level: 'Intermediate', description: 'User interface and experience design' },
       ]
     }
   ];
@@ -88,26 +94,24 @@ const SkillsSection = () => {
 
   const getSkillLevelColor = (level: string) => {
     switch(level) {
-      case 'Expert': return 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-500/20';
-      case 'Advanced': return 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md shadow-blue-500/20';
-      case 'Intermediate': return 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-md shadow-cyan-500/20';
-      default: return 'bg-gradient-to-r from-slate-500 to-slate-600 text-white';
+      case 'Expert': return 'bg-gradient-to-r from-blue-600 to-violet-600 text-white';
+      case 'Advanced': return 'bg-gradient-to-r from-violet-500 to-purple-500 text-white';
+      case 'Intermediate': return 'bg-gradient-to-r from-purple-400 to-pink-400 text-white';
+      default: return 'bg-blue-100 text-blue-800';
     }
   };
 
   return (
-    <section id="skills" className="bg-gradient-to-b from-gray-900 to-gray-800 dark:from-gray-900 dark:to-gray-800 py-20">
+    <section id="skills" className="bg-gray-50 py-20">
       <div className="section-container">
         <motion.h2 
-          className="section-title text-white mb-10"
+          className="section-title"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-            Technical Expertise
-          </span>
+          Technical Expertise
         </motion.h2>
         
         <div className="flex flex-col lg:flex-row gap-8">
@@ -119,27 +123,23 @@ const SkillsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="p-4 border-0 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm border border-white/5 shadow-xl">
-                <h3 className="text-lg font-bold mb-4 pb-2 border-b border-white/10 text-white">Skill Areas</h3>
+              <Card className="p-4 border-0 shadow-md sticky top-24">
+                <h3 className="text-lg font-bold mb-4 pb-2 border-b">Skill Areas</h3>
                 <div className="space-y-2">
                   {skillCategories.map((category) => (
                     <motion.button
                       key={category.title}
-                      className={`w-full text-left p-3 rounded-xl flex items-center justify-between transition-colors ${
+                      className={`w-full text-left p-3 rounded-md flex items-center justify-between transition-colors ${
                         activeCategory === category.title 
-                          ? `bg-gradient-to-r ${category.color} text-white font-medium shadow-lg` 
-                          : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'
+                          ? 'bg-gradient-to-r from-blue-50 to-violet-50 text-blue-700 font-medium' 
+                          : 'hover:bg-gray-100'
                       }`}
                       onClick={() => setActiveCategory(category.title)}
-                      whileHover={{ scale: 1.02, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)" }}
+                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex items-center">
-                        <span className={`mr-3 inline-flex items-center justify-center rounded-full ${
-                          activeCategory === category.title 
-                            ? 'bg-white/20 text-white' 
-                            : 'bg-gray-700 text-gray-300'
-                        } p-2`}>
+                        <span className="mr-3 inline-flex items-center justify-center rounded-full bg-blue-100 p-2">
                           {category.icon}
                         </span>
                         <span>{category.title}</span>
@@ -163,33 +163,32 @@ const SkillsSection = () => {
                   initial="hidden"
                   animate="visible"
                 >
-                  <Card className="p-6 border-0 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-sm border border-white/5 shadow-xl">
-                    <h3 className="text-xl font-bold mb-6 pb-2 border-b border-white/10 flex items-center text-white">
-                      <span className={`mr-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r ${category.color} p-2`}>
+                  <Card className="p-6 border-0 shadow-md">
+                    <h3 className="text-xl font-bold mb-6 pb-2 border-b flex items-center">
+                      <span className="mr-2 inline-flex items-center justify-center rounded-full bg-blue-100 p-2">
                         {category.icon}
                       </span>
                       {category.title}
                     </h3>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {category.skills.map((skill, index) => (
                         <motion.div
                           key={skill.name}
                           variants={itemVariants}
-                          className="card-hover border border-white/5 rounded-xl p-5 backdrop-blur-sm bg-white/5 shadow-lg"
+                          className="card-hover border border-gray-100 rounded-lg p-4"
                           whileHover={{ 
-                            scale: 1.03,
-                            boxShadow: "0 15px 35px -5px rgba(0, 0, 0, 0.3)",
-                            y: -5
+                            scale: 1.02,
+                            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                           }}
                         >
-                          <div className="flex justify-between items-start mb-3">
-                            <h4 className="font-bold text-lg text-white">{skill.name}</h4>
+                          <div className="flex justify-between items-start mb-2">
+                            <h4 className="font-bold text-lg">{skill.name}</h4>
                             <Badge className={`${getSkillLevelColor(skill.level)}`}>
                               {skill.level}
                             </Badge>
                           </div>
-                          <p className="text-gray-300 text-sm">{skill.description}</p>
+                          <p className="text-gray-600 text-sm">{skill.description}</p>
                         </motion.div>
                       ))}
                     </div>
