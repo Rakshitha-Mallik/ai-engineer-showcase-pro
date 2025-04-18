@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { motion } from 'framer-motion';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
