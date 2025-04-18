@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { Send, Mail, MapPin, Phone } from 'lucide-react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -35,14 +35,21 @@ const ContactSection = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
-      const mailtoLink = `mailto:rakshitham07@gmail.com?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(
-        `Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`
-      )}`;
+      const emailBody = `
+Name: ${values.name}
+Email: ${values.email}
+
+Message:
+${values.message}
+      `;
+      
+      const mailtoLink = `mailto:rakshitham07@gmail.com?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
       
       toast({
-        title: "Message ready to send!",
-        description: "Your email client has been opened with the message.",
+        title: "Email client opened",
+        description: "Your message has been prepared in your email client.",
+        duration: 3000,
       });
       
       form.reset();
@@ -50,10 +57,12 @@ const ContactSection = () => {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: "Failed to open email client. Please try again.",
+        duration: 3000,
       });
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const contactInfo = [

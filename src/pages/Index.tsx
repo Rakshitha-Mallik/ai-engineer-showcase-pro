@@ -40,7 +40,7 @@ const Index = () => {
 
   return (
     <motion.div 
-      className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300"
+      className="min-h-screen bg-gradient-to-br from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -82,7 +82,7 @@ const Index = () => {
 
       {/* Dark mode toggle */}
       <motion.button
-        className="fixed bottom-6 right-6 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg z-50 text-gray-800 dark:text-white"
+        className="fixed bottom-6 right-6 p-3 rounded-full bg-white/80 backdrop-blur-sm dark:bg-gray-800/80 shadow-lg z-50 text-gray-800 dark:text-white"
         onClick={() => setIsDarkMode(!isDarkMode)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -91,14 +91,17 @@ const Index = () => {
       </motion.button>
 
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <EducationSection />
-      <ContactSection />
-      <Footer />
+      <div className="snap-y snap-mandatory h-screen overflow 
+-auto">
+        <div className="snap-start"><HeroSection /></div>
+        <div className="snap-start"><AboutSection /></div>
+        <div className="snap-start"><SkillsSection /></div>
+        <div className="snap-start"><ProjectsSection /></div>
+        <div className="snap-start"><ExperienceSection /></div>
+        <div className="snap-start"><EducationSection /></div>
+        <div className="snap-start"><ContactSection /></div>
+        <div className="snap-start"><Footer /></div>
+      </div>
     </motion.div>
   );
 };
