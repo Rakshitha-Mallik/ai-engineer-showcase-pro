@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { Github, Mail, Linkedin } from 'lucide-react';
 import React from 'react';
@@ -6,7 +7,7 @@ const HeroSection = () => {
   return (
     <section id="home" className="relative py-24 overflow-hidden">
       {/* Enhanced animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-100/50 via-purple-100/30 to-blue-100/40 dark:from-blue-600/10 dark:via-purple-600/10 dark:to-pink-600/10 animate-gradient-xy"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10 animate-gradient-xy"></div>
 
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -23,11 +24,11 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-slate-900 to-slate-950 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
                 AI Engineer & 
               </span>
               <br />
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-indigo-900 to-violet-950 dark:from-blue-400 dark:via-violet-400 dark:to-fuchsia-400">
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 dark:from-blue-400 dark:via-violet-400 dark:to-fuchsia-400">
                 Automation Expert
               </span>
             </motion.h1>
@@ -72,17 +73,17 @@ const HeroSection = () => {
             className="flex justify-center"
           >
             <motion.div
-              className="relative w-80 h-80 rounded-2xl overflow-hidden shadow-2xl hover:shadow-indigo-500/20 transition-shadow duration-300"
-              whileHover={{ scale: 1.02, y: -5 }}
+              className="relative w-80 h-80 rounded-2xl overflow-hidden shadow-2xl"
+              whileHover={{ y: -10 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-500/20 via-indigo-500/20 to-purple-500/20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/20 to-pink-600/20 mix-blend-overlay"></div>
               <img
                 src="/images/ai-hero.png"
                 alt="AI Hero Image"
                 className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent">
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent">
                 <span className="text-white font-plus-jakarta font-medium">Automation Specialist</span>
               </div>
             </motion.div>
