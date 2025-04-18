@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,11 +46,13 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
-    /* AI-themed color palette */
-    --ai-blue: 222 89% 55%;
-    --ai-purple: 256 56% 56%;
-    --ai-teal: 174 79% 45%;
-    --ai-deep-blue: 220 70% 20%;
+    /* AI-themed color palette - enhanced for light theme */
+    --ai-blue: 222 89% 50%;
+    --ai-purple: 256 60% 50%;
+    --ai-teal: 174 79% 40%;
+    --ai-deep-blue: 220 70% 25%;
+    --ai-indigo: 240 70% 45%;
+    --ai-slate: 215 30% 25%;
   }
 
   .dark {
@@ -110,11 +113,15 @@
     @apply text-slate-600 dark:text-gray-300;
     line-height: 1.75;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
   .hero-gradient {
-    @apply bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 dark:from-blue-400 dark:via-violet-400 dark:to-purple-400 bg-clip-text text-transparent;
   }
   
   .card-hover {
@@ -185,7 +192,7 @@
 
   /* Glowing effect for dark mode */
   .glow-effect {
-    box-shadow: 0 0 15px rgba(98, 149, 255, 0.3), 0 0 30px rgba(171, 106, 255, 0.1);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.4), 0 0 30px rgba(79, 70, 229, 0.2);
   }
 
   .dark .glow-effect {

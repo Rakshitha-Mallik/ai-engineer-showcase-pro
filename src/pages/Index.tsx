@@ -91,16 +91,17 @@ const Index = () => {
       </motion.button>
 
       <Navbar />
-      <div className="snap-y snap-mandatory h-screen overflow 
--auto">
-        <div className="snap-start"><HeroSection /></div>
-        <div className="snap-start"><AboutSection /></div>
-        <div className="snap-start"><SkillsSection /></div>
-        <div className="snap-start"><ProjectsSection /></div>
-        <div className="snap-start"><ExperienceSection /></div>
-        <div className="snap-start"><EducationSection /></div>
-        <div className="snap-start"><ContactSection /></div>
-        <div className="snap-start"><Footer /></div>
+      
+      {/* Using smooth scrolling instead of snap scrolling for a more flowing experience */}
+      <div className="relative scroll-smooth">
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <EducationSection />
+        <ContactSection />
+        <Footer />
       </div>
     </motion.div>
   );
