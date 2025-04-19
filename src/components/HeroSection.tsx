@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Github, Mail, Linkedin } from 'lucide-react';
 import React from 'react';
@@ -6,8 +5,8 @@ import React from 'react';
 const HeroSection = () => {
   return (
     <section id="home" className="relative py-24 overflow-hidden">
-      {/* Enhanced animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10 animate-gradient-xy"></div>
+      {/* Softer animated background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-100/30 via-purple-100/20 to-blue-100/20 dark:from-blue-600/10 dark:via-purple-600/10 dark:to-pink-600/10 animate-gradient-xy"></div>
 
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -24,11 +23,11 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-600 via-slate-700 to-slate-800 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
                 AI Engineer & 
               </span>
               <br />
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 dark:from-blue-400 dark:via-violet-400 dark:to-fuchsia-400">
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 dark:from-blue-400 dark:via-violet-400 dark:to-fuchsia-400">
                 Automation Expert
               </span>
             </motion.h1>
@@ -65,7 +64,7 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side: Enhanced Hero Image */}
+          {/* Right Side: Hero Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
