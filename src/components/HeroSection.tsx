@@ -18,17 +18,17 @@ const HeroSection = () => {
             className="text-center md:text-left space-y-6"
           >
             <motion.h1 
-              className="font-manrope text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight"
+              className="font-manrope text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-indigo-500/80 via-purple-500/80 to-pink-500/80 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
-                Rakshitha M
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-indigo-500/90 via-purple-500/90 to-pink-500/90 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
+                AI Engineer & 
               </span>
               <br />
-              <span className="text-2xl md:text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500/90 via-violet-500/90 to-fuchsia-500/90 dark:from-blue-400 dark:via-violet-400 dark:to-fuchsia-400">
-                AI Engineer & Automation Expert
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500/90 via-violet-500/90 to-fuchsia-500/90 dark:from-blue-400 dark:via-violet-400 dark:to-fuchsia-400">
+                Automation Expert
               </span>
             </motion.h1>
             <motion.p 
