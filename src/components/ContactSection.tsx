@@ -1,4 +1,3 @@
-
 import { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -36,37 +35,32 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Format email body with clear spacing
+      // Format email body with HTML formatting
       const emailBody = `
-From: ${values.name}
-Reply Email: ${values.email}
+Name: ${values.name}
+From: ${values.email}
 
-Message:
 ${values.message}
-      `;
+      `.trim();
       
-      // Create mailto URL - ensure proper encoding
-      const mailtoLink = `mailto:rakshitham07@gmail.com?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(emailBody)}`;
+      // Create Gmail compose URL with pre-filled fields
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=rakshitham07@gmail.com&su=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(emailBody)}`;
       
-      // Open email client
-      window.open(mailtoLink, '_blank');
+      // Open Gmail in a new window
+      window.open(gmailUrl, '_blank');
       
       toast({
         title: "Email client opened",
-        description: "Your message has been prepared in your email client. Please send it from there.",
-        duration: 5000,
+        description: "Gmail compose window has been opened with your message.",
       });
       
-      // Reset form after successful submission
       form.reset();
-      
     } catch (error) {
-      console.error("Email error:", error);
+      console.error("Error:", error);
       toast({
         variant: "destructive",
-        title: "Email client error",
-        description: "Unable to open your email client. Please try contacting directly at rakshitham07@gmail.com",
-        duration: 5000,
+        title: "Error",
+        description: "Failed to open Gmail. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -79,12 +73,6 @@ ${values.message}
       title: "Email",
       value: "rakshitham07@gmail.com",
       link: "mailto:rakshitham07@gmail.com"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: "+91 8660797761",
-      link: "tel:+918660797761"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
