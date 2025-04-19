@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -233,5 +232,22 @@
   .animate-gradient-xy {
     animation: gradient-xy 15s ease infinite;
     background-size: 400% 400%;
+  }
+
+  /* Section background styles */
+  #about {
+    @apply bg-gradient-to-br from-indigo-50/50 via-purple-50/30 to-pink-50/30;
+  }
+
+  #skills {
+    @apply bg-gradient-to-br from-blue-50/50 via-violet-50/30 to-fuchsia-50/30;
+  }
+
+  #projects {
+    @apply bg-gradient-to-br from-violet-50/50 via-purple-50/30 to-pink-50/30;
+  }
+
+  #experience {
+    @apply bg-gradient-to-br from-purple-50/50 via-indigo-50/30 to-blue-50/30;
   }
 }
