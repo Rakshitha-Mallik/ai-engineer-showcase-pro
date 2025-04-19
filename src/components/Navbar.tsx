@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { Menu, X, Code, Brain } from 'lucide-react';
+import { Menu, X, Code, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -46,8 +45,8 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
             <a href="#" className="flex items-center text-xl font-bold text-gray-900 dark:text-white">
-              <Brain className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
-              <span className="hero-gradient">Rakshitha M</span>
+              <Sparkles className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">AI Forge</span>
             </a>
           </motion.div>
 

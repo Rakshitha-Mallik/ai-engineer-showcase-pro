@@ -236,18 +236,18 @@
 
   /* Section background styles */
   #about {
-    @apply bg-gradient-to-br from-indigo-50/50 via-purple-50/30 to-pink-50/30;
+    @apply bg-gradient-to-br from-blue-50/40 via-indigo-50/30 to-violet-50/40 dark:from-blue-900/10 dark:via-indigo-900/5 dark:to-violet-900/10;
   }
 
   #skills {
-    @apply bg-gradient-to-br from-blue-50/50 via-violet-50/30 to-fuchsia-50/30;
+    @apply bg-gradient-to-br from-violet-50/40 via-purple-50/30 to-pink-50/40 dark:from-violet-900/10 dark:via-purple-900/5 dark:to-pink-900/10;
   }
 
   #projects {
-    @apply bg-gradient-to-br from-violet-50/50 via-purple-50/30 to-pink-50/30;
+    @apply bg-gradient-to-br from-teal-50/40 via-emerald-50/30 to-blue-50/40 dark:from-teal-900/10 dark:via-emerald-900/5 dark:to-blue-900/10;
   }
 
   #experience {
-    @apply bg-gradient-to-br from-purple-50/50 via-indigo-50/30 to-blue-50/30;
+    @apply bg-gradient-to-br from-rose-50/40 via-pink-50/30 to-fuchsia-50/40 dark:from-rose-900/10 dark:via-pink-900/5 dark:to-fuchsia-900/10;
   }
 }
