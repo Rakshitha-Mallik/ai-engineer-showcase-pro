@@ -1,3 +1,4 @@
+
 import { useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,29 +36,37 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Direct Gmail mailto link with pre-formatted content
-      const subject = encodeURIComponent(values.subject);
-      const body = encodeURIComponent(`
-Name: ${values.name}
-Email: ${values.email}
+      // Format email body with clear spacing
+      const emailBody = `
+From: ${values.name}
+Reply Email: ${values.email}
 
 Message:
 ${values.message}
-      `);
+      `;
       
-      window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=rakshitham07@gmail.com&su=${subject}&body=${body}`;
+      // Create mailto URL - ensure proper encoding
+      const mailtoLink = `mailto:rakshitham07@gmail.com?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open email client
+      window.open(mailtoLink, '_blank');
       
       toast({
-        title: "Email opened in Gmail",
-        description: "Your message has been prepared in Gmail.",
+        title: "Email client opened",
+        description: "Your message has been prepared in your email client. Please send it from there.",
+        duration: 5000,
       });
       
+      // Reset form after successful submission
       form.reset();
+      
     } catch (error) {
+      console.error("Email error:", error);
       toast({
         variant: "destructive",
-        title: "Error",
-        description: "Failed to open Gmail. Please try again.",
+        title: "Email client error",
+        description: "Unable to open your email client. Please try contacting directly at rakshitham07@gmail.com",
+        duration: 5000,
       });
     } finally {
       setIsSubmitting(false);

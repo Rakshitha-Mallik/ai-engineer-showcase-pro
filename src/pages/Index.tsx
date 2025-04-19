@@ -1,8 +1,8 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import ProjectSlideshow from '@/components/ProjectSlideshow';
 import AboutSection from '@/components/AboutSection';
 import SkillsSection from '@/components/SkillsSection';
 import ProjectsSection from '@/components/ProjectsSection';
@@ -16,6 +16,7 @@ const Index = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Handle dark mode toggle
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -24,6 +25,7 @@ const Index = () => {
     }
   }, [isDarkMode]);
 
+  // Handle scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -38,11 +40,12 @@ const Index = () => {
 
   return (
     <motion.div 
-      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
+      className="min-h-screen bg-gradient-to-br from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Background particles for dark mode */}
       {isDarkMode && (
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
           {[...Array(20)].map((_, i) => (
@@ -71,11 +74,13 @@ const Index = () => {
         </div>
       )}
 
+      {/* Progress bar */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 z-50"
         style={{ scaleX: scrollProgress / 100, transformOrigin: "left" }}
       />
 
+      {/* Dark mode toggle */}
       <motion.button
         className="fixed bottom-6 right-6 p-3 rounded-full bg-white/80 backdrop-blur-sm dark:bg-gray-800/80 shadow-lg z-50 text-gray-800 dark:text-white"
         onClick={() => setIsDarkMode(!isDarkMode)}
@@ -87,9 +92,9 @@ const Index = () => {
 
       <Navbar />
       
+      {/* Using smooth scrolling instead of snap scrolling for a more flowing experience */}
       <div className="relative scroll-smooth">
         <HeroSection />
-        <ProjectSlideshow />
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
